@@ -1,0 +1,24 @@
+{
+  "name": "for-each-branch",
+  "version": "0.1.0",
+  "description": "Iterate over all branches in a repository",
+  "author": "Pascal",
+  "license": "MIT",
+  "homepage": "https://github.com/pascalgn/for-each-branch",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pascalgn/for-each-branch.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "mocha --timeout=8000 --check-leaks"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.6.1",
+    "fs-extra": "^7.0.0",
+    "mocha": "^5.2.0",
+    "tmp-promise": "^1.0.5"
+  }
+}
