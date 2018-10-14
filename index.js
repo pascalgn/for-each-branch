@@ -6,6 +6,7 @@ async function forEachBranch({
   dir,
   branches = /.+/,
   remote = "origin",
+  force = false,
   reset = false,
   clean = false,
   callback = () => {}
@@ -27,12 +28,16 @@ async function forEachBranch({
   const filteredBranches = filteredRefs.map(ref => ref.branch);
   for (const ref of filteredRefs) {
     const { branch, head } = ref;
-    await git(dir, ["checkout", "--quiet", branch]);
+    if (force) {
+      await git(dir, ["checkout", "--quiet", "--force", branch]);
+    } else {
+      await git(dir, ["checkout", "--quiet", branch]);
+    }
     if (reset) {
       await git(dir, ["reset", "--quiet", "--hard", `${remote}/${branch}`]);
     }
     if (clean) {
-      await git(dir, ["clean", "--quiet", "-d", "--force"]);
+      await git(dir, ["clean", "--quiet", "-d", "--force", "--force"]);
     }
     await Promise.resolve(
       callback({
