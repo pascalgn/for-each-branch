@@ -54,8 +54,10 @@ async function forEachBranch({
 
 function git(cwd, args = []) {
   const stdio = ["ignore", "pipe", "inherit"];
+  const opts = { cwd, stdio };
+  const globalArgs = ["-c", "core.hooksPath=/dev/null"];
   return new Promise((resolve, reject) => {
-    const proc = spawn("git", args, { cwd, stdio });
+    const proc = spawn("git", globalArgs.concat(args), opts);
     const buffers = [];
     proc.stdout.on("data", data => buffers.push(data));
     proc.on("exit", code => {
@@ -63,7 +65,7 @@ function git(cwd, args = []) {
         const data = Buffer.concat(buffers);
         resolve(data.toString("utf8"));
       } else {
-        reject({ code });
+        reject(new Error(`Failed with code ${code}`));
       }
     });
   });
