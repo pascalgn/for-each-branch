@@ -4,7 +4,7 @@ workflow "publish to npm on push" {
 }
 
 action "npm publish" {
-  uses = "pascalgn/npm-publish-action@30a7f54b1e50359f172082b935a0e7a1c6d887be"
+  uses = "pascalgn/npm-publish-action@fdca9152ddc3425105f68f85d495deb9433d2dbc"
   secrets = ["GITHUB_TOKEN", "NPM_AUTH_TOKEN"]
   env = {
     TAG_NAME = "%s"
