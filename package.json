@@ -1,6 +1,6 @@
 {
   "name": "for-each-branch",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Iterate over all branches in a repository",
   "author": "Pascal",
   "license": "MIT",
