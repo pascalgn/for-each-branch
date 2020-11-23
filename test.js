@@ -25,7 +25,7 @@ describe("for-each-branch", () => {
       execSync("git commit --allow-empty -m C3", { cwd: remote, stdio });
 
       const local = join(tmpdir.path, "local");
-      execSync(`git clone '${remote}' '${local}'`, {
+      execSync(`git clone "${remote}" "${local}"`, {
         cwd: tmpdir.path,
         stdio
       });
